@@ -1,0 +1,23 @@
+<div id="box" class="d-flex flex-column">
+
+<div id="card" class="card-column" style="width: 18rem;">
+  <div class="card-body"style="background-color:yellow;" class="card-img-overlay">
+    <img src="{{poke.front_shiny}}" class="card-img-center" style="height:75px" style="width:75px" alt="poke sprite">
+    <h5 class="card-title" STYLE="text-transform:capitalize;">{{poke.name}}</h5>
+    <p class="card-text">
+    <ul>
+      <li>Poke_id: {{poke.poke_id}}</li>
+      <li>Ability: {{poke.ability}}</li>
+      <li>Base_experience: {{poke.base_experience}}</li>
+      <li>Stat 1 Name: {{poke.stat_name1}}</li>
+      <li>Stat 1 Rating: {{poke.stat_rating1}}</li>
+      <li>Stat 2 Name: {{poke.stat_name2}}</li>
+      <li>Stat 2 Rating: {{poke.stat_rating2}}</li>
+      <li>Stat 3 Name: {{poke.stat_name3}}</li>
+      <li>Stat 3 Rating: {{poke.stat_rating3}}</li>
+    </ul>
+      <a href="{{url_for('site.delete_poke', id = poke.poke_id) }}" class="btn btn-primary">Delete</a>
+    </p>
+    </div>
+</div>
+</div>

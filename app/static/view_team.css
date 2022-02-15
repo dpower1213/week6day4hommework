@@ -1,0 +1,17 @@
+#card {
+    background-color: black;
+    border-color: darkred;
+    border-width: 2px;
+    color: darkred;
+    
+}
+
+div.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#box{
+    margin: 5px;
+}

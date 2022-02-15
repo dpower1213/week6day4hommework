@@ -1,0 +1,63 @@
+{% extends 'base.html.j2'%}
+{% block title %}
+    {% if current_user.is_authenticated %}
+    Edit Profile
+    {% else %}
+    Register
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<h1>
+    {% if current_user.is_authenticated %}
+    Edit Profile
+    {% else %}
+    Register
+    {% endif %}
+</h1>
+
+<form action="{{url_for('admin.edit_profile') if current_user.is_authenticated else url_for('admin.registration')}}" method='POST'>
+    {{  form.hidden_tag()  }}
+
+    {% if not current_user.is_authenticated %}
+
+     
+    {{form.icon.label}}<br>
+    {% for subfield in form.icon %}
+        {{subfield}}
+        {{subfield.label | safe }}
+    {% endfor %}
+    <br>
+
+    {%endif%}
+
+    {# first #}
+    {{form.name_first.label(class="form-label")}} 
+    {{form.name_first(class="form-control", value=current_user.name_first)}} 
+
+    {# lastname #}
+    {{form.name_last.label(class="form-label")}} 
+    {{form.name_last(class="form-control", value=current_user.name_last)}} 
+
+    {# email #}
+    {{form.email.label(class="form-label")}} 
+    {{form.email(class="form-control", value=current_user.email)}} 
+    {% for error in form.email.errors %}
+        <small style="color:red;">{{error}}</small><br>
+    {%endfor%}
+
+    {# password #}
+    {{form.password.label(class="form-label")}} 
+    {{form.password(class="form-control")}} 
+
+    {# confirm password #}
+    {{form.confirm_password.label(class="form-label")}} 
+    {{form.confirm_password(class="form-control")}} 
+    {% for error in form.confirm_password.errors %}
+        <small style="color:red;">{{error}}</small><br>
+    {%endfor%}
+
+    {# submit #}
+    {{form.submit(class="btn btn-primary form-control")}}
+</form>
+{% endblock %}
